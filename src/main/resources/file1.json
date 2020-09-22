@@ -1,0 +1,6 @@
+[
+{"firstName":"json_one","lastName":"Tal","age":10},
+{"firstName":"json_two","lastName":"Mabashov","age":20},
+{"firstName":"json_three","lastName":"Cohen","age":30},
+{"firstName":"json_four","lastName":"Levi","age":40}
+]
