@@ -6,8 +6,10 @@ import com.example.person.services.PersonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
@@ -25,6 +27,8 @@ public class PersonController {
     private static final Logger logger = LoggerFactory.getLogger(PersonController.class);
     private PersonService personService;
 
+    @Value("${personSvc.personScheduler.urls}")
+    private List<String> urls;
 
     @Autowired
     public PersonController(PersonService personService){
@@ -109,6 +113,21 @@ public class PersonController {
     }
 
 
+
+    @GetMapping(value = "/fromUrls")
+    public ResponseEntity getAllPersonsFromUrls() {
+        try {
+            List<PersonEntity> personsFromUrls = personService.fetchPersonsFromUrls(urls);
+            if (personsFromUrls==null) {
+                return new ResponseEntity(HttpStatus.NOT_FOUND);
+            }
+            List<Person> dtos = personService.entitiesToDtos(personsFromUrls);
+            return ResponseEntity.ok().body(dtos);
+        }catch (Exception e){
+            logger.error("Failed to find all persons",e);
+            return new ResponseEntity<>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
 
     @GetMapping

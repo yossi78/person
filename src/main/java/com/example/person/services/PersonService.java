@@ -55,7 +55,6 @@ public class PersonService {
         if(personEntity==null){
             return false;
         }
-        updatedPerson.setId(id);
         personRepository.save(updatedPerson.convertToDao());
         return true;
 
@@ -132,7 +131,7 @@ public class PersonService {
     }
 
 
-    private List<Person> entitiesToDtos(List<PersonEntity> entities){
+    public List<Person> entitiesToDtos(List<PersonEntity> entities){
         if(entities==null){
             return null;
         }
@@ -141,7 +140,7 @@ public class PersonService {
         return results;
     }
 
-    private List<PersonEntity> dtosToEntities(List<Person> dtos){
+    public List<PersonEntity> dtosToEntities(List<Person> dtos){
         List<PersonEntity> results = new ArrayList<>();
         if(dtos==null){
             return results;
@@ -158,7 +157,6 @@ public class PersonService {
         Object result = mapper.readValue(str,T);
         return result;
     }
-
 
 
 }
