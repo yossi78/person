@@ -17,8 +17,6 @@ import java.util.List;
 
 
 
-
-
 @RestController
 @RequestMapping(value = "/v1/persons")
 public class PersonController {
