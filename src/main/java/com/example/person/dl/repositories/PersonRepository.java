@@ -14,6 +14,7 @@ public interface PersonRepository  extends JpaRepository<PersonEntity, Long> {
     public Optional<List<PersonEntity>> getAllPersonByFirstNameAndAgeHigherThen(@Param("firstName") String firstName, @Param("age") Integer age);
 
 
+
     public Optional<List<PersonEntity>> findAllByFirstNameAndAge(@Param("firstName") String firstName, @Param("age") Integer age);
 
 
