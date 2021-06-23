@@ -13,6 +13,16 @@ import org.springframework.web.client.RestTemplate;
 public class RestTemplateConfig {
 
 
+/* #######################  MOST ADD  ###########################################################################
+            <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.3.4</version>
+        </dependency>
+/* #########################################################################################################*/
+
+
+
     private final int READ_TIME_OUT=60000;
     private final  int CONNECT_TIME_OUT=60000;
 
